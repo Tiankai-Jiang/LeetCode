@@ -13,5 +13,6 @@ M287
 M1043
 M1130
 M378
+M89
 
 Binary indexed tree, Reservoir Sampling
