@@ -1,17 +1,11 @@
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.stream.*;
 
 public class E349 {
 
     // My solution 1, slow
     public int[] intersection(int[] nums1, int[] nums2) {
-        Set<Integer> s = Arrays.stream(nums1).boxed().collect(Collectors.toSet());
-        Set<Integer> s2 = Arrays.stream(nums2).boxed().collect(Collectors.toSet());
-        s.retainAll(s2);
-        int[] a = new int[s.size()];
-        int i = 0;
-        for (Integer val : s) a[i++] = val;
-        return a;
+        return Arrays.stream(nums1).distinct().filter(Arrays.stream(nums2).boxed().collect(Collectors.toSet())::contains).toArray();
     }
 
     // My solution 2, do not use that one line fancy shit to initialize array, much faster
