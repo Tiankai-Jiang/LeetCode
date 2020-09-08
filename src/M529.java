@@ -41,4 +41,21 @@ public class M529 {
         else change(board, click[0], click[1]);
         return board;
     }
+
+    public char[][] updateBoard2(char[][] board, int[] click) {
+        int m = board.length, n = board[0].length, row = click[0], col = click[1];
+        if(board[row][col]=='M') board[row][col]='X';
+        else {
+            int count = 0;
+            for(int[] pos: new int[][]{{-1,-1},{-1,0},{-1,1},{0,-1},{0,1},{1,-1},{1,0},{1,1}})
+                if(row+pos[0]>=0&&row+pos[0]<m&&col+pos[1]>=0&&col+pos[1]<n&&board[row+pos[0]][col+pos[1]] == 'M') count++;
+            if(count > 0) board[row][col] = (char)(count + '0');
+            else{
+                board[row][col] = 'B';
+                for(int[] pos: new int[][]{{-1,-1},{-1,0},{-1,1},{0,-1},{0,1},{1,-1},{1,0},{1,1}})
+                    if(row+pos[0]>=0&&row+pos[0]<m&&col+pos[1]>=0&&col+pos[1]<n&&board[row+pos[0]][col+pos[1]] == 'M') updateBoard(board, new int[] {row+pos[0], col+pos[1]});
+            }
+        }
+        return board;
+    }
 }

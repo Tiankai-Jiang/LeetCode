@@ -18,7 +18,7 @@ public class M347 {
     // Bucket sort O(n)
     public List<Integer> topKFrequent2(int[] nums, int k) {
         List<Integer>[] bucket = new List[nums.length + 1];
-        Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
         for (int n : nums) frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
         for (int key : frequencyMap.keySet()) {
             int frequency = frequencyMap.get(key);
